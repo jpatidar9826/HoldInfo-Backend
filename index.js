@@ -27,8 +27,9 @@ app.use((req, res, next) => {
 app.use("/api/holdings", holdingRoutes);
 
 app.use((req, res, next) => {
-  const error = new HttpError("Could not find this route.", 404);
-  throw error;
+  return res
+      .status(500)
+      .json({ msg: "Route not found!!"});
 });
 
 const hostname = "0.0.0.0";
